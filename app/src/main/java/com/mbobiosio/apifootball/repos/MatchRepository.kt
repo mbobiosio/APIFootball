@@ -32,7 +32,7 @@ class MatchRepository : BaseRepository() {
         action: String?,
         matchId: Int?,
         apiKey: String?
-    ): Result<Statistic> {
+    ): Result<MatchID> {
         return coroutineHandler(dispatcher) {
             apiService.getStatistics(action, matchId, apiKey)
         }

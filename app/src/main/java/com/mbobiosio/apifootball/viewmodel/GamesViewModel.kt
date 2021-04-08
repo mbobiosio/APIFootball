@@ -24,8 +24,8 @@ class GamesViewModel : ViewModel() {
     private val _games = MutableLiveData<List<Match>?>()
     val games: LiveData<List<Match>?> get() = _games
 
-    private val _statistics = MutableLiveData<Statistic?>()
-    val statistics: LiveData<Statistic?> get() = _statistics
+    private val _statistics = MutableLiveData<MatchID?>()
+    val statistics: LiveData<MatchID?> get() = _statistics
 
     fun fetchGames(leagueId: String, action: String, from: String, to: String, apiKey: String) {
         viewModelScope.launch {

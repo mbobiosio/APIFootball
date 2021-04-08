@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.statistics.observe(this) {
             it?.let {
 
-                Timber.d("${it.statistics}")
+                Timber.d("${it}")
 
             }
         }

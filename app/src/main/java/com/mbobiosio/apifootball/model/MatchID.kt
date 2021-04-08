@@ -1,8 +1,5 @@
 package com.mbobiosio.apifootball.model
 
-import com.mbobiosio.apifootball.MainActivity
-import com.mbobiosio.apifootball.model.response.Response
-import com.mbobiosio.apifootball.util.Constants
 import com.squareup.moshi.Json
 
 /*
@@ -11,5 +8,6 @@ import com.squareup.moshi.Json
 * Nigeria
 */
 data class MatchID(
-    val matchId: Int?
+    @Json(name = "411469")
+    val matchId: Statistic?
 )
