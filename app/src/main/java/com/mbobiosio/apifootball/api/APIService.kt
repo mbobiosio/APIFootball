@@ -30,5 +30,5 @@ interface APIService {
         @Query("action") leagueId: String?,
         @Query("match_id") matchId: Int?,
         @Query("APIkey") apiKey: String?
-    ): MatchID
+    ): Map<String, Statistic?>
 }
