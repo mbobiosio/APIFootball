@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val matchId = 411469
 
-        viewModel.getStatistics("get_statistics", matchId, "9c1b64150701b5b94ce8dfd58c515456d6baea113c4f483ca345328b1ca0db411")
+        viewModel.getStatistics("get_statistics", matchId, "9c1b64150701b5b94ce8dfd58c515456d6baea113c4f483ca345328b1ca0db41")
 
         viewModel.statistics.observe(this) {
             it?.let {
