@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.footballbuzz.android.model.games.Match
-import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
-import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.model.response.Result
 import com.mbobiosio.apifootball.repos.MatchRepository
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 
 /*
 * Created by Mbuodile Obiosio on Apr 05, 2021.
@@ -21,8 +19,8 @@ class GamesViewModel : ViewModel() {
 
     private val matchRepository = MatchRepository()
 
-    private val _games = MutableLiveData<List<Match>?>()
-    val games: LiveData<List<Match>?> get() = _games
+    private val _games = MutableLiveData<ResponseBody?>()
+    val games: LiveData<ResponseBody?> get() = _games
 
     private val _statistics = MutableLiveData<Map<String, Statistic?>?>()
     val statistics: LiveData<Map<String, Statistic?>?> get() = _statistics

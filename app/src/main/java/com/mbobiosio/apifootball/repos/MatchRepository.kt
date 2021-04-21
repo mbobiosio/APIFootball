@@ -1,11 +1,9 @@
 package com.mbobiosio.apifootball.repos
 
-import com.footballbuzz.android.model.games.Match
 import com.mbobiosio.apifootball.api.RetrofitClient
-import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
-import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.model.response.Result
+import okhttp3.ResponseBody
 
 /*
 * Created by Mbuodile Obiosio on Apr 05, 2021.
@@ -22,7 +20,7 @@ class MatchRepository : BaseRepository() {
         from: String?,
         to: String?,
         apiKey: String?
-    ): Result<List<Match>> {
+    ): Result<ResponseBody> {
         return coroutineHandler(dispatcher) {
             apiService.getGames(leagueId, action, from, to, apiKey)
         }

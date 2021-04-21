@@ -1,14 +1,13 @@
 package com.mbobiosio.apifootball.model
 
-import com.mbobiosio.apifootball.model.response.Response
 import com.squareup.moshi.Json
 
 /*
-* Created by Mbuodile Obiosio on Apr 05, 2021.
-* Twitter: @cazewonder
-* Nigeria
-*/
-data class Match(
+ * Created by Mbuodile Obiosio on Apr 17, 2021.
+ * Twitter: @cazewonder
+ * Nigeria
+ */
+data class Response (
     @Json(name = "match_id")
     val matchId: String?,
 
@@ -106,7 +105,7 @@ data class Match(
     var cards: List<Card>?,
 
     @Json(name = "substitutions")
-    var substitutions: Substitutions?,
+    var substitutions: Substitutions?
 
     /*@Json(name = "lineup")
     var lineup: Lineup?,
@@ -114,18 +113,4 @@ data class Match(
     @Json(name = "statistics")
     var statistics: List<Statistic>?,*/
 
-    @Json(name = "message")
-    var message: String?,
-
-    @Json(name = "code")
-    var code: String?,
-
-    @Json(name = "error")
-    var error: String?,
-): Response
-data class Error(
-    @Json(name = "error")
-    val error: Int?,
-    @Json(name = "message")
-    val message: String?
 )
