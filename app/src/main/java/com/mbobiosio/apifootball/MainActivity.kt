@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import com.mbobiosio.apifootball.api.getStatisticAdapter
 import com.mbobiosio.apifootball.databinding.ActivityMainBinding
 import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
@@ -36,18 +37,20 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.statistics.observe(this) {
             it?.let {
+                val json = JSONObject(it.string())
                 when {
-                    it.containsKey("error") -> {
-                        val msg: String? = it["message"] as String?
-                        val err: Number? = it["error"] as Number?
+                    json.has("error") -> {
+                        val msg: String? = json["message"] as String?
+                        val err: Number? = json["error"] as Number?
                         Timber.e("error: $err, message: $msg")
                     }
-                    it.containsKey(matchId.toString()) -> {
-                        val statistic: Statistic? = it[matchId.toString()] as Statistic?
+                    json.has(matchId.toString()) -> {
+                        val value = json[matchId.toString()] as JSONObject
+                        val statistic: Statistic? = getStatisticAdapter().fromJson(value.toString())
                         Timber.d("$statistic")
                     }
                     else -> {
-                        Timber.e("Unexpected response!")
+                        Timber.e("Unexpected response: $json")
                     }
                 }
             }

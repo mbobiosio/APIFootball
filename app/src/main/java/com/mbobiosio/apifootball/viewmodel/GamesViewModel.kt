@@ -11,6 +11,7 @@ import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.model.response.Result
 import com.mbobiosio.apifootball.repos.MatchRepository
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 
 /*
 * Created by Mbuodile Obiosio on Apr 05, 2021.
@@ -24,8 +25,8 @@ class GamesViewModel : ViewModel() {
     private val _games = MutableLiveData<List<Match>?>()
     val games: LiveData<List<Match>?> get() = _games
 
-    private val _statistics = MutableLiveData<Map<String, Any?>?>()
-    val statistics: LiveData<Map<String, Any?>?> get() = _statistics
+    private val _statistics = MutableLiveData<ResponseBody?>()
+    val statistics: LiveData<ResponseBody?> get() = _statistics
 
     fun fetchGames(leagueId: String, action: String, from: String, to: String, apiKey: String) {
         viewModelScope.launch {

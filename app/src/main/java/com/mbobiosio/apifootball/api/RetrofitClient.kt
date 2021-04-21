@@ -1,6 +1,8 @@
 package com.mbobiosio.apifootball.api
 
+import com.mbobiosio.apifootball.model.Statistic
 import com.mbobiosio.apifootball.util.Constants
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -35,6 +37,10 @@ private fun getMoshi(): Moshi {
     return Moshi.Builder().apply {
         this.add(KotlinJsonAdapterFactory())
     }.build()
+}
+
+fun getStatisticAdapter(): JsonAdapter<Statistic> {
+    return getMoshi().adapter(Statistic::class.java)
 }
 
 private fun getRetrofit(): Retrofit {

@@ -6,6 +6,7 @@ import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
 import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.model.response.Result
+import okhttp3.ResponseBody
 
 /*
 * Created by Mbuodile Obiosio on Apr 05, 2021.
@@ -32,7 +33,7 @@ class MatchRepository : BaseRepository() {
         action: String?,
         matchId: Int?,
         apiKey: String?
-    ): Result<Map<String, Any?>> {
+    ): Result<ResponseBody> {
         return coroutineHandler(dispatcher) {
             apiService.getStatistics(action, matchId, apiKey)
         }

@@ -5,6 +5,7 @@ import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
 import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.util.Constants
+import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -30,5 +31,5 @@ interface APIService {
         @Query("action") leagueId: String?,
         @Query("match_id") matchId: Int?,
         @Query("APIkey") apiKey: String?
-    ): Map<String, Any?>
+    ): ResponseBody
 }
