@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.mbobiosio.apifootball.api.getMatchAdapter
 import com.mbobiosio.apifootball.databinding.ActivityMainBinding
 import com.mbobiosio.apifootball.listener.MatchListener
 import com.mbobiosio.apifootball.model.Match
@@ -45,11 +46,16 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Wrong api key", Toast.LENGTH_LONG).show()
                     }
                     is JSONArray -> {
+                        val matchList = mutableListOf<Match>()
                         for (i in 0 until json.length()) {
                             val data = json.getJSONObject(i)
                             Timber.d("$data")
+                            val match = getMatchAdapter().fromJson(data.toString())
+                            if (match != null) {
+                                matchList.add(match)
+                            }
                         }
-
+                        adapter.submitList(matchList)
                     }
                     else -> {
                         Timber.d("Unexpected response")
