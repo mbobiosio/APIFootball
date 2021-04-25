@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mbobiosio.apifootball.model.Match" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/match_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:cardElevation="2dp"
+        app:cardForegroundColor="@android:color/transparent"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/home_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                tools:text="3"
+                android:text="@{data.matchHomeTeamScore}"
+                app:layout_constraintBottom_toBottomOf="@+id/home_team_name"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/home_team_name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/away_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                tools:text="1"
+                android:text="@{data.matchAwayTeamScore}"
+
+                app:layout_constraintBottom_toBottomOf="@+id/away_team_name"
+                app:layout_constraintEnd_toEndOf="@+id/home_team_score"
+                app:layout_constraintStart_toStartOf="@+id/home_team_score"
+                app:layout_constraintTop_toTopOf="@+id/away_team_name" />
+
+            <TextView
+                android:id="@+id/match_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                tools:text="14:00"
+                android:text="@{data.matchTime}"
+                app:layout_constraintBottom_toBottomOf="@+id/home_team_score"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/home_team_score" />
+
+
+            <TextView
+                android:id="@+id/match_live_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.matchStatus}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/away_team_score"
+                app:layout_constraintEnd_toEndOf="@+id/match_time"
+                app:layout_constraintTop_toTopOf="@+id/away_team_score"
+                tools:text="24" />
+
+            <TextView
+                android:id="@+id/home_team_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{data.matchHomeTeamName}"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Chelsea" />
+
+            <TextView
+                android:id="@+id/away_team_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@{data.matchAwayTeamName}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/home_team_name"
+                app:layout_constraintTop_toBottomOf="@+id/home_team_name"
+                tools:text="Arsenal" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.65" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

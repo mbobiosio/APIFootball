@@ -1,4 +1,4 @@
-package com.footballbuzz.android.model.games
+package com.mbobiosio.apifootball.model
 
 import com.mbobiosio.apifootball.model.Card
 import com.mbobiosio.apifootball.model.Goalscorer

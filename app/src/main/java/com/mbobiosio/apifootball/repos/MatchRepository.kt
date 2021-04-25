@@ -1,10 +1,8 @@
 package com.mbobiosio.apifootball.repos
 
-import com.footballbuzz.android.model.games.Match
+import com.mbobiosio.apifootball.model.Match
 import com.mbobiosio.apifootball.api.RetrofitClient
-import com.mbobiosio.apifootball.model.MatchID
 import com.mbobiosio.apifootball.model.Statistic
-import com.mbobiosio.apifootball.model.Statistics
 import com.mbobiosio.apifootball.model.response.Result
 
 /*
@@ -25,16 +23,6 @@ class MatchRepository : BaseRepository() {
     ): Result<List<Match>> {
         return coroutineHandler(dispatcher) {
             apiService.getGames(leagueId, action, from, to, apiKey)
-        }
-    }
-
-    suspend fun getStatistics(
-        action: String?,
-        matchId: Int?,
-        apiKey: String?
-    ): Result<Map<String, Statistic?>> {
-        return coroutineHandler(dispatcher) {
-            apiService.getStatistics(action, matchId, apiKey)
         }
     }
 }
